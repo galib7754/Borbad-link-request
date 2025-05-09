@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>মুভি লিংক অনুরোধ ফর্ম</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'SolaimanLipi', Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+            line-height: 1.5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin: 10px;
+        }
+        h1 {
+            color: #128C7E;
+            margin-bottom: 20px;
+            font-size: clamp(18px, 4vw, 22px);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #128C7E;
+            box-shadow: 0 0 0 2px rgba(18, 140, 126, 0.2);
+        }
+        button {
+            background-color: #128C7E;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        button:active {
+            transform: scale(0.98);
+            background-color: #075E54;
+        }
+        .success-message {
+            color: #128C7E;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+            font-size: 14px;
+            padding: 12px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            text-align: center;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            input, button {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>মুভি লিংক পেতে আপনার তথ্য দিন</h1>
+        
+        <div class="form-group">
+            <label for="translationId">ট্রান্সলেশন আইডি:</label>
+            <input type="text" id="translationId" placeholder="ট্রান্সলেশন আইডি লিখুন">
+        </div>
+        
+        <div class="form-group">
+            <label for="phoneNumber">মোবাইল নাম্বার:</label>
+            <input type="tel" id="phoneNumber" placeholder="01XXXXXXXXX" inputmode="numeric" maxlength="11">
+        </div>
+        
+        <button onclick="submitToWhatsApp()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+            </svg>
+            WhatsApp এ সাবমিট করুন
+        </button>
+        
+        <div id="successMessage" class="success-message">
+            ✅ আপনার তথ্য সফলভাবে জমা হয়েছে! WhatsApp গ্রুপে রিডাইরেক্ট করা হচ্ছে...
+        </div>
+    </div>
+
+    <script>
+        function submitToWhatsApp() {
+            const translationId = document.getElementById('translationId').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            
+            // ভ্যালিডেশন
+            if (!translationId) {
+                alert('ট্রান্সলেশন আইডি প্রয়োজন');
+                document.getElementById('translationId').focus();
+                return;
+            }
+            
+            if (!phoneNumber || !/^01[3-9]\d{8}$/.test(phoneNumber)) {
+                alert('সঠিক মোবাইল নাম্বার দিন (০১XXXXXXXXX)');
+                document.getElementById('phoneNumber').focus();
+                return;
+            }
+            
+            const whatsappGroupLink = "https://chat.whatsapp.com/JgJv8iKIcwkFuihPF3WGPG";
+            const message = `মুভি লিংক অনুরোধ:\n\nআইডি: ${translationId}\nমোবাইল: ${phoneNumber}`;
+            
+            // সাকসেস মেসেজ দেখান
+            const successMsg = document.getElementById('successMessage');
+            successMsg.style.display = 'block';
+            
+            // WhatsApp ওপেন করা
+            setTimeout(() => {
+                window.open(`${whatsappGroupLink}?text=${encodeURIComponent(message)}`, '_blank');
+                
+                // ফর্ম রিসেট
+                document.getElementById('translationId').value = '';
+                document.getElementById('phoneNumber').value = '';
+                successMsg.style.display = 'none';
+            }, 1500);
+        }
+        
+        // মোবাইল নাম্বার ভ্যালিডেশন
+        document.getElementById('phoneNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 11);
+        });
+    </script>
+</body>
+</html>
